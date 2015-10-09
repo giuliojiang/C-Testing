@@ -4,6 +4,7 @@
 #include <vector>
 #include <string>
 #include <iostream>
+#include <sstream>
 
 // game representation
 //
@@ -26,6 +27,9 @@ public:
     // \brief compare two 'life' instances for inequality
     // \returns true iff the two instances are not equivalent
     bool operator!=( const life& ) const;
+    
+    // prints to console the status of the life
+    void print();
 private:
     // members
     std::vector<std::string> data_;
@@ -33,8 +37,8 @@ private:
     int width;
     
     // private methods
-    char getCellAt(int x, int y);
-    int getAliveNeighbours(int x, int y);
+    char getCellAt(int x, int y) const;
+    int getAliveNeighbours(int x, int y) const;
 };
 
 #endif
