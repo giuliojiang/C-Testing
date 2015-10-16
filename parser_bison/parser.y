@@ -161,7 +161,7 @@ expression:                                       /* expression */
   identifier 
   { $$ = $1; }
 | number
-  { $$ = $1 }
+  { $$ = $1; }
 | expression STAR expression 
   { $$ = new Operator(*$1, $2, *$3); }
 | expression SLASH expression 
