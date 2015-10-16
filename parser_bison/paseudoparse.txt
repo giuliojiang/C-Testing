@@ -1,0 +1,44 @@
+parseStatement()
+{
+  if (peek("if"))
+  {
+    return parseIfStatement();
+  } else if (peek("begin"))
+  {
+    return parseBeginStatement();
+  } else
+  {
+    return parsePrintStatement();
+  }
+}
+
+parseBeginStatement()
+{
+  match("begin");
+  parseStatement;
+  while (peek(";"))
+  {
+    match(";");
+    parseStatement;
+  }
+  match("end");
+}
+
+parsePrintStatement()
+{
+  match("print");
+  parseExpr;
+}
+
+parseIfStatement()
+{
+  match("if");
+  parseExpr;
+  match("then");
+  parseStatement;
+  if (peek("else"))
+  {
+    match("else");
+    parseStatement;
+  }
+}
